@@ -1,7 +1,7 @@
-"""Excel URL Configuration
+"""Tea URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/dev/topics/http/urls/
+    https://docs.djangoproject.com/en/1.10/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -14,12 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from Tea import views
+from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', views.login, name='login'),
-    url(r'^login/$',views.login,name = 'login'),
-    url(r'^regist/$',views.regist,name = 'regist'),
-    url(r'^index/$',views.index,name = 'index'),
-    url(r'^logout/$',views.logout,name = 'logout'),
+    url(r'^admin/', admin.site.urls),
 ]
