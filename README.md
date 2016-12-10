@@ -1,0 +1,1 @@
+The project which we try to familiar with Django framework.
