@@ -2,7 +2,6 @@
 
 # Windows ignore
 **/Include
-**/Lib
 **/Scripts
 **/tcl
 
