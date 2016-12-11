@@ -10,7 +10,7 @@
 </head>
 <body>
    <div class="container">
-          <form class="form-signin" role="form">
+          <form class="form-signin" role="form" method="POST">
         <h2 class="form-signin-heading">X X X 管理系统</h2>
               {% csrf_token %}
              {{ form1.username }}
@@ -19,8 +19,9 @@
           <label>
             <input value="remember-me" type="checkbox"> 记住我
           </label>
+            <span class='left'><a href='/users/register/' >没有账号点击这里注册</a></span>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
       </form>
    </div>
 

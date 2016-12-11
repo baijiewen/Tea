@@ -13,7 +13,7 @@ import django.contrib.auth as auth
 
 
 def register(request):
-
+    ret = {'status': '', }
     regForms = forms.RegisterForm()
     # if request.method == 'POST':
     #     form = forms.RegisterForm(request.POST)
@@ -35,16 +35,19 @@ def register(request):
         if form.is_valid():
             user = form.cleaned_data["username"]
             pwd = form.cleaned_data["password"]
-            try:
-                User.object.get(username=user)
-                return HttpResponse("用户名已存在")
-            except:
+            print 'check Ok!'
+            if User.objects.filter(username=user):
+                ret['status'] = '用户名已注册'
+                return render_to_response('users/register.html', ret)
+            else:
                 User.objects.create(username=user, password=pwd)
-                return HttpResponse("注册成功")
-                return redirect('/user/login')
+                print 'register OK!'
+                #return HttpResponse("注册成功")
+                return redirect('/users/login')
         else:
             return HttpResponse('请输入正确的格式!!')
     else:
+        print 'BUG'
         return render(request, 'users/register.html', {'form': regForms})
 
 
@@ -55,7 +58,9 @@ def loginView(request):
         if form1.is_valid():
             user_name = form1.cleaned_data["username"]
             pwd = form1.cleaned_data["password"]
+            print 'check Ok!'
             user = auth.authenticate(username=user_name, password=pwd)
+            print user
             if user:
                 print '登录成功'
                 auth.login(request, user)

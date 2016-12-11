@@ -10,7 +10,7 @@
 </head>
 <body>
    <div class="container">
-          <form class="form-signin" role="form">
+          <form class="form-signin" role="form" method="POST">
         <h2 class="form-signin-heading">X X X 管理系统</h2> <!-- Please sign in -->
               {% csrf_token %}
              {{ form.username }}
@@ -21,6 +21,7 @@
           </label>
           <span class='left'><a href='/users/login/' >已有账号点击这里登录</a></span>
         </div>
+        <div> {{ status }}</div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">注 册</button>
       </form>
    </div>
